@@ -1,27 +1,10 @@
 import Link from "next/link";
+import { blogs } from "@/src/data/blogs";
+export const dynamic = "force-static";
 
-type Blog = {
-  slug: string;
-  title: string;
-  description: string;
-  image: string;
-};
-
-async function getBlogs(): Promise<Blog[]> {
-  const res = await fetch("http://localhost:3000/api/blogs", {
-    cache: "no-store", // important for seeing loading every time
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch blogs");
-  }
-
-  return res.json();
-}
+//export const revalidate = 60; if blogs later come from cms or strapi make it isr
 
 export default async function BlogPage() {
-  const blogs = await getBlogs();
-
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 px-6 py-12">
       <section className="mx-auto max-w-7xl">

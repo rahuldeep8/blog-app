@@ -13,15 +13,29 @@ const blogs = [
     slug: "nextjs-routing",
     title: "Next.js Routing",
     description:
-      "Learn how routing works in Next.js, including dynamic routes, layouts, and static generation.",
+      "Next.js routing is built on a file-based system that makes creating pages and navigation simple and intuitive. This article explains how routes are created using folders and files, how dynamic routes work, and how layouts help structure an application. It also covers how routing integrates with static and dynamic rendering for better performance.",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
   },
-  // ... other blogs
+  {
+    slug: "parallel-vs-sequential-data-fetching",
+    title: "Parallel vs Sequential Data Fetching",
+    description:
+      "Parallel and sequential data fetching are two common patterns for loading data in modern web applications. This article explains how each approach works, their performance trade-offs, and when to choose one over the other. You’ll also see how these patterns apply in frameworks like Next.js and React to build faster, more efficient apps.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+  },
+  {
+    slug: "performance-optimization",
+    title: "Web Performance Optimization",
+    description:
+      "Web performance optimization involves techniques like minimizing and compressing assets, optimizing images, reducing JavaScript bundle size, and leveraging caching strategies. This article explains how to improve loading speed, rendering performance, and runtime efficiency. It also highlights how tools and frameworks like Next.js help apply these techniques effectively.",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+  },
 ];
 
 // Pre-generate all blog pages
 export async function generateStaticParams() {
-  return blogs.map((blog) => ({ slug: blog.slug }));
+  return blogs.map((blog) => ({ slug: blog.slug })); //generateStaticParams() tells Next.js
+  // These are all the dynamic route values I want you to pre-build at build time.”
 }
 
 export default async function BlogPage({
