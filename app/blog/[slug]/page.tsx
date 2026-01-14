@@ -1,4 +1,6 @@
 // app/blog/[slug]/page.tsx
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const blogs = [
@@ -56,11 +58,16 @@ export default async function BlogPage({
     >
       <article className="max-w-3xl mx-auto bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden">
         {/* Blog image */}
-        <img
-          src={blog.image}
-          alt={`Cover image for ${blog.title}`}
-          className="w-full h-32 object-cover sm:h-80 md:h-96"
-        />
+        <div className="relative w-full h-32 sm:h-80 md:h-96">
+          <Image
+            src={blog.image}
+            alt={`Cover image for ${blog.title}`}
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1200px"
+            priority //priority helps in Lcp because browser fetches images immediately and removes lazy loading
+          />
+        </div>
 
         {/* Blog content */}
         <div className="p-6 sm:p-8">
@@ -76,12 +83,12 @@ export default async function BlogPage({
           </p>
 
           <div className="mt-6">
-            <a
+            <Link
               href="/blog"
               className="inline-block rounded-lg bg-indigo-600 text-white px-5 py-3 text-sm font-medium shadow hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 transition-colors"
             >
               ← Back to Blog
-            </a>
+            </Link>
           </div>
         </div>
       </article>

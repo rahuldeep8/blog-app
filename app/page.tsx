@@ -9,7 +9,7 @@ export default function Home() {
           <h1 className="text-4xl sm:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
             Welcome to Our Blog
           </h1>
-
+          <h1 className="font-roboto">Lets go forward</h1>
           <p className="text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto sm:mx-0">
             Dive into carefully crafted articles about modern web development,
             from React tips to Next.js best practices. Stay updated with
