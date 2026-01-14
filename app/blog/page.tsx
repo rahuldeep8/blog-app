@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { blogs } from "@/src/data/blogs";
+import Image from "next/image";
+
 export const dynamic = "force-static";
 
 //export const revalidate = 60; if blogs later come from cms or strapi make it isr
@@ -27,11 +29,20 @@ export default async function BlogPage() {
                   href={`/blog/${blog.slug}`}
                   className="group flex h-full flex-col overflow-hidden rounded-xl border bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <img
+                  <div className="relative h-48 w-full">
+                    <Image
+                      src={blog.image}
+                      alt={blog.title}
+                      fill
+                      className="object-cover"
+                      // sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    />
+                  </div>
+                  {/* <img
                     src={blog.image}
                     alt={blog.title}
                     className="h-48 w-full object-cover"
-                  />
+                  /> */}
 
                   <div className="flex flex-1 flex-col p-5">
                     <h2 className="text-lg font-semibold group-hover:text-indigo-700">
